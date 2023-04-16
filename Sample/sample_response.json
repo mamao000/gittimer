@@ -1,0 +1,4 @@
+{
+    "branches": ["GitTimer_test","GitTimer_dev","GitTimer_prod"],
+    "issues": ["record_lost", "response_delay"]
+}
