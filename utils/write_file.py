@@ -1,6 +1,6 @@
-#import gitlab
+import gitlab
 import json
-#from log_tool import create_log
+from log_tool import create_log
 
 def write_dict_in_json(file_dir : str, dic : dict):
     file_data:str = ''
