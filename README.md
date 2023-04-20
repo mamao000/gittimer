@@ -1,6 +1,12 @@
 # GitTimer
+## Requirements
 
+```
+pip install python-gitlab
+```
 
+## link
+- https://python-gitlab.readthedocs.io/en/stable/
 
 ## Getting started
 
