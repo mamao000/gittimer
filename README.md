@@ -5,7 +5,7 @@
 pip install python-gitlab
 ```
 
-## link
+## links
 - https://python-gitlab.readthedocs.io/en/stable/
 
 ## Getting started
