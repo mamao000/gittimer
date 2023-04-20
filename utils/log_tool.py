@@ -57,7 +57,7 @@ def push_log(request_content: dict, project_id, access_token):
     # write_dict_in_json(file_dir, request_content)
 
     readme_file = project.files.get(file_path="timer_log.json", ref="api_test")
-    readme_file.content = new_file_content
+    readme_file.content = json.dumps(new_file_content)
     readme_file.save(branch='api_test', commit_message='log update')
     print('file updated successfully')
     # file = project.files.create({'file_path': 'timer_log.json', 'branch': 'api_test', 'content': file_content, 'author_email': 'api_test@example.com', 'author_name': 'api_test', "commit_message":"api testing"})
