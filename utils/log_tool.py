@@ -67,3 +67,32 @@ def push_log(request_content: dict, project_id, access_token):
     # project.default_branch().commit('Initial commit', actions=[{'action': 'create', 'file_path': 'test_readme.md', 'content': file_content}])
 
     return
+
+
+def read_project(project_id, access_token):
+    # Replace these values with your GitLab access token and project ID
+    PROJECT_ID = project_id
+    ACCESS_TOKEN = access_token
+
+    # Create a GitLab API client using your access token
+    gl = gitlab.Gitlab('https://gitlab.com', private_token=ACCESS_TOKEN)
+
+    # Find the project by ID
+    project = gl.projects.get(PROJECT_ID)
+
+    branches = project.branches.list()
+    issues = project.issues.list()
+
+    project_content = {
+        'branches': [branch.name for branch in branches],
+        'issues': [issue.title for issue in issues],
+        'description': [issue.description for issue in issues]        
+    }
+    
+    project_content['issues'] = [str(issue) for issue in project_content['issues']]
+    project_content['description'] = [str(issue) for issue in project_content['description']]
+    
+    print(type(project_content))
+    print(project_content)
+
+    return project_content
