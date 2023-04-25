@@ -10,10 +10,26 @@ pip install python-gitlab
 
 ## Getting started
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+```python
+from utils.log_tool import read_project
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+### read branches and issues in project
+project_data = read_project("your project id",'your access token with with read permission')
+```
 
+```python
+from utils.log_tool import push_log
+
+### update Timer's log file to GitLab project 
+test_request = {"title": "update test", 
+                "description": "for api testing", 
+                "status": "open", 
+                "timestamp": "2023-03-29T10:00:00.000Z", 
+                "duration": 120, 
+                "assignee": "YCL"}
+
+push_log(test_request,"your project id", "your access token with with full api permission")
+```
 ## Add your files
 
 - [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
