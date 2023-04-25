@@ -15,6 +15,17 @@ from utils.log_tool import read_project
 
 ### read branches and issues in project
 project_data = read_project("your project id",'your access token with with read permission')
+
+>>> 
+{'branches': ['api_test', 'main', 'website'], 
+'issues': ['fetch description of issues', 
+            'push integration', 
+            'api test 2', 
+            'api test'], 
+'description': ['add issues description to response',     
+            'integrate the code in write_json.py into write_file.py to complete end to end test(request to json on GitLab).', 
+            'issues status comparison', 
+            'created for API testing']}
 ```
 
 ```python
