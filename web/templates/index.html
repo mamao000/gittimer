@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>番茄鐘嗚呼！</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='img/tomato.ico') }}">
+</head>
+
+<body>
+  <div id="timer_page" class="page">
+    <!-- timer box -->
+    <div class="timer">
+      <div class="box_timer"></div>
+      <div id=timer_count class="txt_timer" ></div>
+      <div id="btn_timer_start" class="btn" onclick='timer()'>
+        <div class="txt_btn">START</div>
+      </div>
+      <div id="btn_timer_stop" class="btn">
+        <div class="txt_btn" onclick='stop_timer()'>STOP</div>
+      </div>
+    </div>
+    <!-- to-do list -->
+    <div id="txt_todolist">TO-DO LIST</div>
+    <div id="btn_gitlab" class="btn" onclick="display_settimerwin()">
+      <div class="txt_btn">GitLab</div>
+    </div>
+    <div id="btn_add" class="btn" onclick="display_settimerwin()">
+      <div class="txt_btn">ADD</div>
+    </div>
+    <!-- list items -->
+    <div id="listitem1" class="box_listitem">
+      <div class="title_listitem">TITLE 1</div>
+      <div class="descr_listitem">description a</div>
+    </div>
+    <div id="listitem2" class="box_listitem">
+      <div class="title_listitem">TITLE 2</div>
+      <div class="descr_listitem">description b</div>
+    </div>
+    <!-- set timer window -->
+    <div class="win_settimer">
+      <div class="box_settimer_win"></div>
+      <input name="title" value="title name" class="txt_settimer_title">
+      <textarea name="descr" class="box_settimer_descr">input your description...</textarea>
+      <div id="btn_settimer_create" class="btn" onclick="close_settimerwin()">
+        <div class="txt_btn">CREATE</div>
+      </div>
+      <img id="btn_settimer_close" onclick="close_settimerwin()" src="{{ url_for('static', filename='img/cross.png') }}"/>
+    </div>
+    <!-- header -->
+    <div id="header_rec"></div>
+    <img id="header_tomato" src="{{ url_for('static', filename='img/tomato.png') }}"/>
+  </div>
+
+    <script src="{{url_for('static', filename='src/button.js')}}"></script>
+    <script src="{{url_for('static', filename='src/timer.js')}}"></script>
+</body>
+
+</html>
