@@ -13,6 +13,8 @@ body{
 
 /* class: btn */
 .btn{
+    cursor: pointer;
+
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -267,6 +269,8 @@ body{
     bottom: 6.5%;
 }
 #btn_settimer_close{
+    cursor: pointer;
+    
     position: absolute;
     width: 48px;
     height: 48px;

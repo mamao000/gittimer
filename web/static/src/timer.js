@@ -11,7 +11,7 @@ function timer(minutes, seconds) {
         var minutes = Math.trunc(elapsed / 60);
         var seconds = Math.round(elapsed % 60);
         document.getElementById('timer_count').innerHTML =
-            "".concat(fmtTime(minutes), ":").concat(fmtTime(seconds));
+            "".concat(fmtTime(minutes), " : ").concat(fmtTime(seconds));
     }
     timerInterval = setInterval(secondWork, 1000);
 }
