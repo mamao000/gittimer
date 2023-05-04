@@ -13,6 +13,9 @@ function timer(minutes: number = 25, seconds: number = 0){
     elapsed = minutes * 60 + seconds;
     function secondWork(){
         --elapsed;
+        if(elapsed <= 0){
+            terminate();
+        }
         const minutes = Math.trunc(elapsed / 60);
         const seconds = Math.round(elapsed % 60);
         document.getElementById('timer_count').innerHTML =
@@ -21,6 +24,14 @@ function timer(minutes: number = 25, seconds: number = 0){
             `RESTART`;
     }
     timerInterval = setInterval(secondWork, 1000);
+}
+
+function terminate(): void{
+    stop_timer();
+    let music = document.createElement("AUDIO") as HTMLMediaElement;
+    music.setAttribute("src", "./music/Oregairu\ Zoku\ OST\ -\ Replica.mp3");
+    music.autoplay = true;
+    console.log("autoplay started");
 }
 
 function stop_and_conti(): void{
