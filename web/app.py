@@ -27,7 +27,7 @@ def get_data(project_id, token):
 @app.route('/update_log/<project_id>/<token>', methods=['GET', "POST"])
 def update_log(project_id, token):
     request_content = request.json
-    print(type(request_content))
-    # push_log(request_content, project_id, token)
+    # print(type(request_content))
+    push_log(request_content, project_id, token)
     return request_content
 
