@@ -1,7 +1,12 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template 
+from flask import request
+from utils.log_tool import read_project, push_log
+from flask_cors import CORS
+
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def index():
@@ -14,3 +19,17 @@ def hello():
 @app.route("/hey")
 def hey():
     return "hey"
+
+@app.route('/get_data/<project_id>/<token>', methods=['GET'])
+def get_data(project_id, token):
+    gitlab_res = read_project(project_id, token)
+    return gitlab_res
+
+
+@app.route('/update_log/<project_id>/<token>', methods=['GET', "POST"])
+def update_log(project_id, token):
+    request_content = request.json
+    # print(type(request_content))
+    push_log(request_content, project_id, token)
+    return request_content
+
