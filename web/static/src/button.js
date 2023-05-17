@@ -1,11 +1,15 @@
 function close_win(win_id){
-                el = document.querySelector(win_id);
-                el.style.visibility = 'hidden'
+  el = document.querySelector(win_id);
+  el.style.visibility = 'hidden';
+  el = document.querySelector('.panel_win');
+  el.style.visibility = 'hidden';
 }
 
 function display_win(win_id){
-            el = document.querySelector(win_id);
-            el.style.visibility = 'visible'
+  el = document.querySelector(win_id);
+  el.style.visibility = 'visible';
+  el = document.querySelector('.panel_win');
+  el.style.visibility = 'visible';
 }
 
 function send_GL_Request(Project_id, access_token) {

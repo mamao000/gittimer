@@ -6,7 +6,7 @@ function timer(minutes, seconds) {
     if (minutes === void 0) { minutes = 25; }
     if (seconds === void 0) { seconds = 0; }
     isStop = false;
-    document.getElementById('btn_stop').innerHTML =
+    document.getElementById('txt_btn_stop').innerHTML =
         "STOP";
     clearInterval(timerInterval);
     elapsed = minutes * 60 + seconds;
@@ -19,7 +19,7 @@ function timer(minutes, seconds) {
         var seconds = Math.round(elapsed % 60);
         document.getElementById('timer_count').innerHTML =
             "".concat(fmtTime(minutes), " : ").concat(fmtTime(seconds));
-        document.getElementById('btn_start').innerHTML =
+        document.getElementById('txt_btn_start').innerHTML =
             "RESTART";
     }
     timerInterval = setInterval(secondWork, 1000);
@@ -35,13 +35,13 @@ function stop_and_conti() {
     if (isStop) {
         isStop = false;
         continue_timer();
-        document.getElementById('btn_stop').innerHTML =
+        document.getElementById('txt_btn_stop').innerHTML =
             "STOP";
     }
     else {
         isStop = true;
         stop_timer();
-        document.getElementById('btn_stop').innerHTML =
+        document.getElementById('txt_btn_stop').innerHTML =
             "CONTI";
     }
 }
