@@ -15,20 +15,20 @@
     <!-- timer box -->
     <div class="timer">
       <div class="box_timer"></div>
-      <div id=timer_count class="txt_timer" >25 : 00</div>
+      <div id=timer_count class="txt_timer" onclick="display_win('#win_settimer')" >25 : 00</div>
       <div id="btn_timer_start" class="btn" onclick='timer()'>
-        <div id="btn_start" class="txt_btn">START</div>
+        <div id="txt_btn_start" class="txt_btn">START</div>
       </div>
       <div id="btn_timer_stop" class="btn" onclick='stop_and_conti()'>
-        <div id="btn_stop" class="txt_btn">STOP</div>
+        <div id="txt_btn_stop" class="txt_btn">STOP</div>
       </div>
     </div>
     <!-- to-do list -->
     <div id="txt_todolist">TO-DO LIST</div>
-    <div id="btn_gitlab" class="btn" onclick="display_settimerwin()">
+    <div id="btn_gitlab" class="btn" onclick="display_win('#win_gitlab')">
       <div class="txt_btn">GitLab</div>
     </div>
-    <div id="btn_add" class="btn" onclick="display_settimerwin()">
+    <div id="btn_add" class="btn" onclick="display_win('#win_addtodo')">
       <div class="txt_btn">ADD</div>
     </div>
     <!-- list items -->
@@ -40,16 +40,52 @@
       <div class="title_listitem">TITLE 2</div>
       <div class="descr_listitem">description b</div>
     </div>
+    <!-- window panel -->
+    <div class="panel_win"></div>
     <!-- set timer window -->
-    <div class="win_settimer">
-      <div class="box_settimer_win"></div>
-      <input name="title" value="title name" class="txt_settimer_title">
-      <textarea name="descr" class="box_settimer_descr">input your description...</textarea>
-      <div id="btn_settimer_create" class="btn" onclick="close_settimerwin()">
+    <div id="win_settimer" class="win">
+      <div class="box_win"></div>
+      <input name="timer_min" value="15" id="input_settimer" class="txt_title">
+      <dic id="txt_settimer">min(s)</dic>
+      <div id="btn_settimer_set" class="btn" onclick="close_win('#win_settimer')">
+        <div class="txt_btn">SET</div>
+      </div>
+      <div id="btn_settimer_cancel" class="btn" onclick="close_win('#win_settimer')">
+        <div class="txt_btn">CANCEL</div>
+      </div>
+    </div>
+    <!-- snooze window -->
+    <div id="win_snooze" class="win">
+      <div class="box_win"></div>
+      <div id="btn_snooze_stop" class="btn" onclick="close_win('#win_snooze')">
+        <div class="txt_btn">STOP AND<br>SUBMIT</div>
+      </div>
+      <div id="btn_snooze_snooze" class="btn" onclick="close_win('#win_snooze')">
+        <div class="txt_btn">5 MORE<br>MINS</div>
+      </div>
+    </div>
+    <!-- gitlab window -->
+    <div id="win_gitlab" class="win">
+      <div class="box_win"></div>
+      <input name="pid" placeholder="project id..." id="input_pid" class="txt_title">
+      <input name="accToken" placeholder="access token..." id="input_accToken" class="txt_title">
+      <div id="btn_gitlab_create" class="btn" onclick="close_win('#win_gitlab')">
         <div class="txt_btn">CREATE</div>
       </div>
-      <img id="btn_settimer_close" onclick="close_settimerwin()" src="{{ url_for('static', filename='img/cross.png') }}"/>
+      <img id="btn_gitlab_close" onclick="close_win('#win_gitlab')" src="{{ url_for('static', filename='img/cross.png') }}"/>
     </div>
+    <!-- add to-do list window -->
+    <div id="win_addtodo" class="win">
+      <div class="box_win"></div>
+      <input name="title" placeholder="title name" class="txt_title">
+      <textarea name="descr" placeholder="type your description" class="box_descr"></textarea>
+      <div id="btn_addtodo_create" class="btn" onclick="close_win('#win_addtodo')">
+        <div class="txt_btn">CREATE</div>
+      </div>
+      <img id="btn_addtodo_close" onclick="close_win('#win_addtodo')" src="{{ url_for('static', filename='img/cross.png') }}"/>
+    </div>
+    <!-- window panel -->
+    <div class="panel_win"></div>
     <!-- header -->
     <div id="header_rec"></div>
     <img id="header_tomato" src="{{ url_for('static', filename='img/tomato.png') }}"/>

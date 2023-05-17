@@ -29,12 +29,13 @@ body{
     border-radius: 30px;
 }
 .txt_btn{
-    font-family: 'B612';
+    font-family: 'Baloo';
     font-style: normal;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 29px;
     display: flex;
     align-items: center;
+    text-align: center;
     
     color: #445E76;
 
@@ -62,7 +63,7 @@ body{
     left: 5.33%;
     top: 17.97%;
     
-    font-family: 'B612';
+    font-family: 'Baloo';
     font-style: normal;
     font-size: 32px;
     line-height: 49px;
@@ -77,7 +78,7 @@ body{
     left: 10.67%;
     top: 57.03%;
     
-    font-family: 'B612';
+    font-family: 'Baloo';
     font-style: normal;
     font-size: 20px;
     line-height: 29px;
@@ -86,6 +87,92 @@ body{
     white-space: nowrap;
     
     color: #FFFFFF;
+}
+
+/* class: windows */
+.panel_win{
+    visibility: hidden;
+
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    top: 0%;
+
+    background: #000000;
+    opacity: 0.5;
+}
+.win{
+    position: fixed;
+    width: 720px;
+    height: 320px;
+    left: calc(50% - 720px/2);
+    top: calc(50% - 320px/2);
+}
+.box_win{
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    
+    background: #FFFFFF;
+    border: 16px solid #D1E3F5;
+    border-radius: 30px;
+}
+.txt_title{
+    padding: 0px 20px 0px 20px;
+    resize: none;
+    
+    position: absolute;
+    left: 7.5%;
+    right: 7.5%;
+    top: 10%;
+    bottom: 78%;
+
+    border-radius: 30px;
+    
+    font-family: 'Baloo';
+    font-style: normal;
+    font-size: 24px;
+    /* line-height: 58px; */
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    
+    color: #486D90;    
+}
+.box_descr{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 20px;
+    isolation: isolate;
+    resize: none;
+    
+    position: absolute;
+    left: 7.5%;
+    right: 7.5%;
+    top: 25%;
+    bottom: 20%;
+    
+    background: #E4EAEF;
+    border-radius: 30px;
+    
+    font-family: 'Baloo';
+    font-style: normal;
+    font-size: 20px;
+    line-height: 44px;
+    white-space: nowrap;
+    
+    color: #486D90;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    z-index: 0;
 }
 
 /* header */
@@ -125,6 +212,8 @@ body{
     border-radius: 180px;
 }
 .txt_timer{
+    cursor: pointer;
+
     position: absolute;
     left: calc(0% - 350px/2);
     top: calc(0% + 400px*0.4 - 189px/2);
@@ -157,7 +246,7 @@ body{
     left: calc(50% - 180px/2 - 210px);
     top: 576px;
     
-    font-family: 'B612';
+    font-family: 'Baloo';
     font-style: normal;
     font-size: 32px;
     line-height: 39px;
@@ -191,85 +280,111 @@ body{
 }
 
 /* set timer window */
-.win_settimer{
+#win_settimer{
     visibility: hidden;
-    position: fixed;
-    width: 720px;
-    height: 320px;
-    left: calc(50% - 720px/2);
-    top: calc(50% - 320px/2);
-}
-.box_settimer_win{
-    box-sizing: border-box;
 
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: 0%;
-    
-    background: #FFFFFF;
-    border: 16px solid #D1E3F5;
-    border-radius: 30px;
+    width: 480px;
+    height: 240px;
+    left: calc(50% - 480px/2);
+    top: calc(50% - 240px/2);
 }
-.txt_settimer_title{
-    padding: 0px 20px 0px 20px;
-    resize: none;
-    
-    position: absolute;
-    left: 7.5%;
-    right: 7.5%;
-    top: 10%;
-    bottom: 78%;
+#input_settimer{
+    left: 20%;
+    right: 45%;
+    top: 20%;
+    bottom: 40%;
+    text-align: center;
 
-    border-radius: 30px;
+    font-size: 40px;
+}
+#txt_settimer{
+    position: absolute;
+    left: 60%;
+    top: calc(40% - 30px);
     
-    font-family: 'B612';
+    font-family: 'Baloo';
     font-style: normal;
-    font-size: 24px;
-    /* line-height: 58px; */
+    font-size: 40px;
     display: flex;
     align-items: center;
     white-space: nowrap;
-    
-    color: #486D90;    
-}
-.box_settimer_descr{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 20px;
-    isolation: isolate;
-    resize: none;
-    
-    position: absolute;
-    left: 7.5%;
-    right: 7.5%;
-    top: 25%;
-    bottom: 20%;
-    
-    background: #E4EAEF;
-    border-radius: 30px;
-    
-    font-family: 'B612';
-    font-style: normal;
-    font-size: 20px;
-    line-height: 44px;
-    white-space: nowrap;
-    
-    color: #486D90;
+    user-select: none;
 
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    z-index: 0;
+    color: #486D90;
 }
-#btn_settimer_create{
+#btn_settimer_set{
     position: absolute;
-    right: 3.43%;
-    bottom: 6.5%;
+    width: 128px;
+    height: 40px;
+    right: calc(10% + 40px/2);
+    bottom: 15%;
 }
-#btn_settimer_close{
+#btn_settimer_cancel{
+    position: absolute;
+    width: 128px;
+    height: 40px;
+    left: calc(10% + 40px/2);
+    bottom: 15%;
+}
+/* snooze window */
+#win_snooze{
+    visibility: hidden;
+
+    width: 480px;
+    height: 240px;
+    left: calc(50% - 480px/2);
+    top: calc(50% - 240px/2);
+}
+#btn_snooze_stop{
+    position: absolute;
+    width: 150px;
+    height: 80px;
+    right: calc(15%);
+    top: calc(50% - 80px/2);
+}
+#btn_snooze_snooze{
+    position: absolute;
+    width: 150px;
+    height: 80px;
+    left: calc(15%);
+    top: calc(50% - 80px/2);
+}
+/* gitlab window */
+#win_gitlab{
+    visibility: hidden;
+}
+#input_pid{
+    top: 20%;
+    bottom: 60%;
+}
+#input_accToken{
+    top: 50%;
+    bottom: 30%;
+}
+#btn_gitlab_create{
+    position: absolute;
+    right: 4%;
+    bottom: 10%;
+}
+#btn_gitlab_close{
+    cursor: pointer;
+
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    left: calc(100% - 48px);
+    top: 0px;
+}
+/* add to-do list window */
+#win_addtodo{
+    visibility: hidden;
+}
+#btn_addtodo_create{
+    position: absolute;
+    right: 4%;
+    bottom: 7.5%;
+}
+#btn_addtodo_close{
     cursor: pointer;
 
     position: absolute;
