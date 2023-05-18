@@ -48,7 +48,7 @@
       <input name="timer_min" value="15" id="input_settimer" class="txt_title">
       <dic id="txt_settimer">min(s)</dic>
       <div id="btn_settimer_set" class="btn" onclick="close_win('#win_settimer')">
-        <div class="txt_btn">SET</div>
+        <div class="txt_btn" onclick='set_minutes()'>SET</div>
       </div>
       <div id="btn_settimer_cancel" class="btn" onclick="close_win('#win_settimer')">
         <div class="txt_btn">CANCEL</div>
@@ -63,6 +63,10 @@
       <div id="btn_snooze_snooze" class="btn" onclick="close_win('#win_snooze')">
         <div class="txt_btn">5 MORE<br>MINS</div>
       </div>
+      <audio controls>
+          <source src="{{url_for('static', filename='music/clock.mp3')}}" id ='AUDIO' >
+    <script src="{{url_for('static', filename='src/timer.js')}}"></script>
+      </audio>
     </div>
     <!-- gitlab window -->
     <div id="win_gitlab" class="win">

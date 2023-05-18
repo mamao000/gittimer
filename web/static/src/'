@@ -4,75 +4,65 @@ let timerInterval:number = 0;
 let elapsed:number = 0;
 let isStop: boolean = false;
 let activate: boolean = false;
-let minutes:number = 25;
-let seconds:number = 0;
+let minutes: number = 25
 
-function timer() : void{
-    if(activate && isStop){
-        minutes = 25;
-        seconds = 1;
-    }
-    activate = true;
+function timer(minutes, seconds: number = 0){
+    isactivate = true;
     isStop = false;
-    document.getElementById('txt_btn_start').innerHTML =
-        `START`;
-    document.getElementById('txt_btn_stop').innerHTML =
+    document.getElementById('btn_stop').innerHTML =
         `STOP`;
 
     clearInterval(timerInterval);
-    //let minutes :number = minute;
     elapsed = minutes * 60 + seconds;
     function secondWork(){
         --elapsed;
         if(elapsed <= 0){
             terminate();
         }
-        minutes = Math.trunc(elapsed / 60);
-        seconds = Math.round(elapsed % 60);
+        const minutes = Math.trunc(elapsed / 60);
+        const seconds = Math.round(elapsed % 60);
         document.getElementById('timer_count').innerHTML =
             `${ fmtTime(minutes) } : ${fmtTime(seconds)}`;
+        document.getElementById('btn_start').innerHTML =
+            `RESTART`;
     }
     timerInterval = setInterval(secondWork, 1000);
 }
 
 function set_minutes(): void {
-    let input: number = Number((<HTMLInputElement>document.getElementById('input_settimer')).value);
+    let input: number = document.getElementById('input_settimer').value;
     minutes = input;
     console.log('change to ${minutes} minutes');
-    document.getElementById('timer_count').innerHTML =
-        `${ minutes } : 00`;
+        document.getElementById('timer_count').innerHTML =
+            `${ minutes } : ${fmtTime(seconds)}`;
 }
 
 function terminate(): void{
-    activate = false;
+    activate = true;
     stop_timer();
-    let music = document.getElementById("AUDIO") as HTMLMediaElement;
-    //music.play();
+    let music = document.createElement("AUDIO") as HTMLMediaElement;
+    music.setAttribute("src", "./music/Oregairu\ Zoku\ OST\ -\ Replica.mp3");
     music.autoplay = true;
+    console.log("autoplay started");
 }
 
-
 function stop_display(): void{
-    let music = document.getElementById("AUDIO") as HTMLMediaElement;
+    let music = document.createElement("AUDIO") as HTMLMediaElement;
     music.pause();
 }
 
 function stop_and_conti(): void{
-    if(!activate)
-        return;
-    if(isStop){
+    if(isStop && activate){
         isStop = false;
         continue_timer();
-        document.getElementById('txt_btn_stop').innerHTML =
+        document.getElementById('btn_stop').innerHTML =
             `STOP`;
     }
     else{
         isStop = true;
         stop_timer();
-        document.getElementById('txt_btn_stop').innerHTML =
+        document.getElementById('btn_stop').innerHTML =
             `CONTI`;
-        document.getElementById('txt_btn_start').innerHTML =
-            `RESTART`;
     }
 }
 function stop_timer(){
@@ -80,5 +70,5 @@ function stop_timer(){
 }
 
 function continue_timer(){
-    timer();
+    timer(Math.trunc(elapsed / 60), Math.round(elapsed % 60));
 }

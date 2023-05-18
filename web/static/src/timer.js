@@ -2,36 +2,56 @@ function fmtTime(num) { return String(num).padStart(2, '0'); }
 var timerInterval = 0;
 var elapsed = 0;
 var isStop = false;
-function timer(minutes, seconds) {
-    if (minutes === void 0) { minutes = 25; }
-    if (seconds === void 0) { seconds = 0; }
+var activate = false;
+var minutes = 25;
+var seconds = 0;
+function timer() {
+    if (activate && isStop) {
+        minutes = 25;
+        seconds = 1;
+    }
+    activate = true;
     isStop = false;
+    document.getElementById('txt_btn_start').innerHTML =
+        "START";
     document.getElementById('txt_btn_stop').innerHTML =
         "STOP";
     clearInterval(timerInterval);
+    //let minutes :number = minute;
     elapsed = minutes * 60 + seconds;
     function secondWork() {
         --elapsed;
         if (elapsed <= 0) {
             terminate();
         }
-        var minutes = Math.trunc(elapsed / 60);
-        var seconds = Math.round(elapsed % 60);
+        minutes = Math.trunc(elapsed / 60);
+        seconds = Math.round(elapsed % 60);
         document.getElementById('timer_count').innerHTML =
             "".concat(fmtTime(minutes), " : ").concat(fmtTime(seconds));
-        document.getElementById('txt_btn_start').innerHTML =
-            "RESTART";
     }
     timerInterval = setInterval(secondWork, 1000);
 }
+function set_minutes() {
+    var input = Number(document.getElementById('input_settimer').value);
+    minutes = input;
+    console.log('change to ${minutes} minutes');
+    document.getElementById('timer_count').innerHTML =
+        "".concat(minutes, " : 00");
+}
 function terminate() {
+    activate = false;
     stop_timer();
-    var music = document.createElement("AUDIO");
-    music.setAttribute("src", "./music/Oregairu\ Zoku\ OST\ -\ Replica.mp3");
+    var music = document.getElementById("AUDIO");
+    //music.play();
     music.autoplay = true;
-    console.log("autoplay started");
+}
+function stop_display() {
+    var music = document.getElementById("AUDIO");
+    music.pause();
 }
 function stop_and_conti() {
+    if (!activate)
+        return;
     if (isStop) {
         isStop = false;
         continue_timer();
@@ -43,11 +63,13 @@ function stop_and_conti() {
         stop_timer();
         document.getElementById('txt_btn_stop').innerHTML =
             "CONTI";
+        document.getElementById('txt_btn_start').innerHTML =
+            "RESTART";
     }
 }
 function stop_timer() {
     clearInterval(timerInterval);
 }
 function continue_timer() {
-    timer(Math.trunc(elapsed / 60), Math.round(elapsed % 60));
+    timer();
 }
